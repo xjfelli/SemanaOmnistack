@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+const cors = require('cors');
 
 const app = express();
 
@@ -11,7 +12,7 @@ mongoose.connect('mongodb+srv://semana:semana@cluster0-svzl3.mongodb.net/test?re
     useNewUrlParser: true,
 });
 
-app.use((req, res) => {
+app.use((req, res, next) => {
     req.io = io;
     next();
 })
